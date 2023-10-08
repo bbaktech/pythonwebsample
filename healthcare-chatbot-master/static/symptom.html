@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select other symptoms</title>
+</head>
+
+<script>
+    function checkCookies() {
+        var otrsympt = '{{ otrsympt | tojson | safe }}';
+        var listdeseses = otrsympt;
+        var listdeseses1 = listdeseses.replace('[',' ');
+        var listdeseses3 = listdeseses1.replace(']',' ');
+
+        var coolVarParts = listdeseses3.split(','); //
+        var foo = document.getElementById("p1");
+
+        for (let i = 0; i < coolVarParts.length; i++) {
+
+            var element = document.createElement("input");
+            element.setAttribute("type", "checkbox");
+            element.setAttribute("id", i);
+            element.setAttribute("value", coolVarParts[i]);
+            element.setAttribute("name","cb1");
+            foo.appendChild(element);
+
+            var element = document.createElement("label");
+            element.setAttribute("for", i);
+            element.innerText = coolVarParts[i];
+            foo.appendChild(element);
+
+            element = document.createElement("br");
+            foo.appendChild(element);
+        }
+
+    }
+    </script>
+
+<body onload="checkCookies();">
+
+<h1>More Details on symptoms </h1>
+
+<form action = "http://localhost:5000/result" method = "POST">
+<tabel style="background-color:powderblue;">
+    <tr>
+        <tb><label >Pls check relevent options you are suffering</label> 
+        </tb>
+    </tr>
+    <tr>
+        <tb><p id = "p1"> </p> <br>
+        </tb>
+    </tr>
+    <tr>
+        <tb><input type="submit" value="Submit">
+        </tb>
+    </tr>
+</tabel>
+</form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Options Title</title>
+<script>
+    function checkCookies() {
+        var deseses = '{{ deseses | tojson | safe }}';
+        var listdeseses = deseses;
+        var listdeseses1 = listdeseses.replace('[',' ');
+        var listdeseses3 = listdeseses1.replace(']',' ');
+        //var listdeseses3 = listdeseses2.replace('"',' ');
+        var coolVarParts = listdeseses3.split(','); //
+        var foo = document.getElementById("p1");
+
+        for (let i = 0; i < coolVarParts.length; i++) {
+            
+            var element = document.createElement("input");
+            element.setAttribute("type", "radio");
+            element.setAttribute("id", i);
+            element.setAttribute("value", coolVarParts[i]);
+            element.setAttribute("name", "op1");
+            if (i == 0) element.setAttribute("checked", "checked");
+            foo.appendChild(element);
+
+            var element = document.createElement("label");
+            element.setAttribute("for", i);
+            element.innerText = coolVarParts[i];
+            foo.appendChild(element);
+
+            element = document.createElement("br");
+            foo.appendChild(element);
+        }
+
+    }
+    </script>
+</head>
+<body style="background-color:rgb(243, 253, 157);", onload="checkCookies();">
+    <h1>Detected Deseses List </h1>
+    <form action = "http://localhost:5000/symptom" method = "POST"> 
+        <table style="background-color:powderblue;">
+            <tr>
+                <td> <p>Pls click relevent one, you meant option, you are suffering</p></td>
+            </tr>
+            <tr>
+                <td> <p id = "p1"> </p> </td>
+            </tr>
+            <tr>
+                <td> <p id = "p2"> 
+                    <label for="sel">From how many days ?</label><br>
+                    <input type="number" id="ds1" name="ds1" value="1" min="0" max="10" step="1" > </p> 
+                </td>
+            </tr> 
+            <tr>
+                <td> <input type="submit" name="submit_button"> </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

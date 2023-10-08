@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+    function checkCookies() {
+        var rslt = '{{ rslt | tojson | safe }}';
+        var listdeseses = rslt;
+
+        var coolVarParts = listdeseses.split(','); 
+        var foo = document.getElementById("b1");
+
+        for (let i = 0; i < coolVarParts.length; i++) {
+            var element = document.createElement("p");
+            var tmp1 = coolVarParts[i].replace('"','')
+            var tmp = tmp1.replace('[','').replace(']','')
+            element.innerText = tmp;
+            foo.appendChild(element);
+        }
+    }
+    </script>
+<body id= "b1", style="background-color:rgb(243, 253, 157);", onload="checkCookies();">
+
+<h2>Analysis Results </h2>
+<p id = "p1", style="color:blue;" >
+
+</p>
+
+</body>
+</html>
