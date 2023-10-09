@@ -32,7 +32,10 @@ def symptom():
         ans1 = user_answer
         ans2 = ans1.removesuffix('"')
         ans = ans2.removeprefix(' "')
+        print("sympt:")
         print(ans)
+        print("No:Days:")
+        print(ndays)
         otrsympt = otherSymptoms(ans,ndays)
         print(otrsympt)
         return render_template('symptom.html',otrsympt = otrsympt)

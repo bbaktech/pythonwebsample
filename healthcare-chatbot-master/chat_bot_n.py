@@ -60,6 +60,7 @@ symptoms_dict = {}
 
 for index, symptom in enumerate(x):
        symptoms_dict[symptom] = index
+
 #functions starts
 def calc_condition(exp,days):
     sum=0
@@ -166,7 +167,7 @@ def tree_to_code1(tree,feature_names,disease_input):
         print("Enter valid symptom.")
         return 0
 
-
+#user entered first symptoms used list of probal desises will be returned
 def listdesises(symptom, name):
     global rslt
     rslt.clear()
@@ -209,6 +210,8 @@ def recurse(node, depth):
 def otherSymptoms(decese,nd):
     global disease_input
     global num_days
+    global present_disease
+    present_disease = []
     num_days = nd
     disease_input = decese
     recurse(0, 1)
@@ -235,11 +238,12 @@ def computeresult(symptoms):
         rslt.append(description_list[second_prediction[0]])
 #        print(description_list[second_prediction[0]])
 
-    rslt.append(description_list[present_disease[0]])
+#    this seems doble entry
+#    rslt.append(description_list[present_disease[0]])
 #    print(description_list[present_disease[0]])
     precution_list=precautionDictionary[present_disease[0]]
     rslt.append("Take following measures : ")
-#    print("Take following measures : ")
+#   print("Take following measures : ")
     for  i,j in enumerate(precution_list):
 #        print("(",i+1,")",j)
         rslt.append("(*)  "+ j )
